@@ -8,6 +8,7 @@ def comparisonCountingSort(list):
     dataDict = {}
     sortedList = []
     count = 0
+    print(len(list))
     for i in range(0, len(list)):
         for j in range(0, len(list)):
             if list[i] > list[j]:
@@ -60,7 +61,7 @@ def DistributinCountingSort(list):
 
 dataLists =[]
 for i in range(0,1000000):
-    dataLists.append(random.randint(1,1000000))
+    dataLists.append(i)
 
 print('\n<----------Comparison Counting Sort--------->\n')
 # comparisonCountingSort([13, 6, 9, 3, 10, 7])
