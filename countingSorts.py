@@ -1,7 +1,10 @@
+import random
+import time
 
 #Comparison Counting Sort
 def comparisonCountingSort(list):
     # list = [13, 6, 9, 3, 10, 7]
+    start_time = time.time()
     dataDict = {}
     sortedList = []
     count = 0
@@ -15,12 +18,14 @@ def comparisonCountingSort(list):
         count = 0
     for i in range(0, len(list)):
         sortedList.append(dataDict[i])
-    print('Unsorted List {}'.format(list))
-    print('Sorted Array with Comparison Counting Sort {}'.format(sortedList))
+    print("%s seconds " % (time.time() - start_time))
+    # print('Unsorted List {}'.format(list))
+    # print('Sorted Array with Comparison Counting Sort {}'.format(sortedList))
 
 #Distribuiton Counting Sort
 def DistributinCountingSort(list):
     # list = [9, 6, 9, 9, 6, 5]
+    start_time = time.time()
     dataDict = {}
     unique = set(list)
     unique = sorted(unique)
@@ -35,13 +40,13 @@ def DistributinCountingSort(list):
         dataDict.update(encounter)
         dataDict = dict(sorted(dataDict.items(), key=lambda item: item[0]))
         count = 0
-    print('Encounter Times{}'.format(dataDict))
+    # print('Encounter Times{}'.format(dataDict))
     j = 0
     for i in unique:
         j = j + dataDict[i]
         dValues = {i: j}
         distributionValues.update(dValues)
-    print('Distributed Values {}'.format(distributionValues))
+    # print('Distributed Values {}'.format(distributionValues))
     for i in dataDict.keys():
         for j in range(0, dataDict[i]):
             if dataDict[i] == 0:
@@ -50,10 +55,20 @@ def DistributinCountingSort(list):
                 sortedList.append(i)
                 dataDict[i] = dataDict[i] - 1
                 continue
-    print('Sorted List with Distribution Counting Sort {}'.format(sortedList))
+    # print('Sorted List with Distribution Counting Sort {}'.format(sortedList))
+    print("%s seconds " % (time.time() - start_time))
 
+dataLists =[]
+for i in range(0,1000000):
+    dataLists.append(random.randint(1,1000000))
 
 print('\n<----------Comparison Counting Sort--------->\n')
-comparisonCountingSort([13, 6, 9, 3, 10, 7])
+# comparisonCountingSort([13, 6, 9, 3, 10, 7])
+comparisonCountingSort(dataLists)
 print('\n<----------Distribution Counting Sort--------->\n')
-DistributinCountingSort([9, 6, 9,21,21, 9, 6, 5])
+# DistributinCountingSort([9, 6, 9,21,21, 9, 6, 5])
+DistributinCountingSort(dataLists)
+
+
+
+
