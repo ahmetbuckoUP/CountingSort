@@ -18,7 +18,11 @@ def comparisonCountingSort(list):
         dataDict.update(d)
         count = 0
     for i in range(0, len(list)):
-        sortedList.append(dataDict[i])
+        try:
+            sortedList.append(dataDict[i])
+            continue
+        except:
+            data = 0
     print("%s seconds " % (time.time() - start_time))
     # print('Unsorted List {}'.format(list))
     # print('Sorted Array with Comparison Counting Sort {}'.format(sortedList))
@@ -60,8 +64,9 @@ def DistributinCountingSort(list):
     print("%s seconds " % (time.time() - start_time))
 
 dataLists =[]
-for i in range(0,1000000):
-    dataLists.append(i)
+for i in range(0,100):
+    number = random.randint(0,100)
+    dataLists.append(number)
 
 print('\n<----------Comparison Counting Sort--------->\n')
 # comparisonCountingSort([13, 6, 9, 3, 10, 7])
